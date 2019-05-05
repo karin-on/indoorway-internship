@@ -29,17 +29,38 @@ Good luck!
 --------------------------------------------------------------------------
 TODOs:
 1. #stuffShop should cover 100% of height.
+KN: 100% of height of...? :) To my mind this point is not very precise. I assumed it's about the 100% of the viewport.
+
 2. Why header doesn't have a 'nice color'?
 - **Write your answer here.**
+KN: The color is overwritten by the color (salmon) associated to #header id. There are 2 reasons of the overwriting: cascading rule in CSS (the salmon color is lower in the CSS document) and selector specifity (id selector, i.e. #header, is stronger than class selector, i.e. .niceColor)
+
 3. What we can do with our header cutted off?
 - **Write your answer here and try to fix it.**
+There are a few ways of fixing this depending on what the question exactly refers to and on the exact effect you want to achieve:
+a) if you mean the #header's corners being cut off the obvious thing is to remove the border radius in #header selector. It fixes a problem of h4 text which is also cut off at the same time. However...
+b) ...if you want to keep the rounded corners of the #header and fix the h4 problem only, you can remove 'overflow: hidden;' from #header selector and add 'padding: 1px 0;' instead. It's not an aesthetic solution though because the h4 text still sticks out of the #header. This is why...
+c) ...I would recommend (still assuming you want to keep the rounded corners) simply adding a left (and optionally right) padding to #header and this is what I did.
+
 4. Clicking 'stuff' label should set focus to stuff select.
+KN: Label's 'for' should be the same as select's 'id' so I changed the 'for' attribute to 'stuffSelect'.
+
 5. Every second element of #cart list should have different color.
 6. Remove bullet points from #cart list elements.
 7. Form elements should be in column.
 8. Shop's logo have to be on the right side, vertically aligned in the middle.
+KN: In the middle of...? I assumed that it refers to the middle of the parent, #header.
+
 9. Is it looking nice? What else you can do?
 - **Write some ideas here or modify the page and write what you have done:)**
+To be honest, no, it does not look nice to me :D Neither graphics, nor the code itself. I would modify both.
+
+- reset? -> maybe recommended only
+- BEM + no ids/* in CSS
+- container?
+- class to each cart element (li in JS)
+
+
 -->
 <div id="stuffShop">
     <header id="header" class="niceColor">
@@ -50,8 +71,8 @@ TODOs:
 
     <p>Please add things you want to buy:</p>
 
-    <form id="addStuffForm" action="#">
-        <label for="stuff">Stuff:</label>
+    <form id="addStuffForm" class="addStuffForm" action="#">
+        <label for="stuffSelect">Stuff:</label>
         <select name="stuff" id="stuffSelect"></select>
         <button type="submit">Add</button>
     </form>
@@ -59,7 +80,7 @@ TODOs:
     <p id="description"></p>
 
     <h2 class="niceColor">Stuff I want to buy:</h2>
-    <ul id="cart"></ul>
+    <ul id="cart" class="cart"></ul>
 </div>
 
     <script src="app.js"></script>
