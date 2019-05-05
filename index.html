@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Indoorway - internship</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!--
+Hi and welcome in the Indoorway's test for interns.
+
+Don't be scared by the amount of tasks, you don't have to do it all.
+Just try the best you can do. Start with the HTML and CSS
+and then jump into JS if you're up to it.
+
+Fork this pen by clicking button in the top right
+(you don't have to create an account), then modify the page according to TODOs.
+
+You can do whatever you want as long as it works.
+
+Remember to save your work and when you are done, send a link back to us.
+
+Good luck!
+
+--------------------------------------------------------------------------
+TODOs:
+1. #stuffShop should cover 100% of height.
+2. Why header doesn't have a 'nice color'?
+- **Write your answer here.**
+3. What we can do with our header cutted off?
+- **Write your answer here and try to fix it.**
+4. Clicking 'stuff' label should set focus to stuff select.
+5. Every second element of #cart list should have different color.
+6. Remove bullet points from #cart list elements.
+7. Form elements should be in column.
+8. Shop's logo have to be on the right side, vertically aligned in the middle.
+9. Is it looking nice? What else you can do?
+- **Write some ideas here or modify the page and write what you have done:)**
+-->
+<div id="stuffShop">
+    <header id="header" class="niceColor">
+        <h1>-Little Stuff Shop-</h1>
+        <h4>Buy what you want and feel happy</h4>
+        <img id="logo" src="https://imageshack.com/a/img923/9881/F0N9Z0.png" alt="Shop with window and doors">
+    </header>
+
+    <p>Please add things you want to buy:</p>
+
+    <form id="addStuffForm" action="#">
+        <label for="stuff">Stuff:</label>
+        <select name="stuff" id="stuffSelect"></select>
+        <button type="submit">Add</button>
+    </form>
+
+    <p id="description"></p>
+
+    <h2 class="niceColor">Stuff I want to buy:</h2>
+    <ul id="cart"></ul>
+</div>
+
+    <script src="app.js"></script>
+</body>
+</html>

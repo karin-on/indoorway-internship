@@ -1,0 +1,25 @@
+body {
+    font: lighter 16px Verdana, sans-serif;
+}
+
+#stuffShop {
+    background-color: lightblue;
+    height: 100%;
+}
+
+.niceColor {
+    background-color: lightsalmon;
+}
+
+#header {
+    border-radius: 50px;
+    background-color: salmon;
+    overflow: hidden;
+}
+
+#logo {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    right: 0;
+}
