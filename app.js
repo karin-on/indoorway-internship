@@ -124,7 +124,10 @@ var shopApp = {
 
         event.preventDefault();
         // TODO: Other way to call shopApp.addToCart()?
-        shopApp.addToCart();
+        // shopApp.addToCart();
+        // shopApp.addToCart.apply(shopApp);
+        shopApp.addToCart.call(shopApp);
+
         shopApp.updateCart();
     }
 }
