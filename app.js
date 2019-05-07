@@ -109,12 +109,6 @@ var shopApp = {
         // this.cart[this.cart.length] = stuff;
         //KN: this.cart.push(stuff);
 
-        // this.stuff[index].amount > 0 ? this.cart.push(stuff) : this.warning.innerHTML = "You can't buy this product anymore. It is no longer in stock.";
-        //
-        // //change amount available
-        // this.stuff[index].amount > 0 ? this.stuff[index].amount-- : null;
-        // this.populateStuffSelect();
-
         if (this.isAvailable(index)) {
             this.cart.push(stuff);
             this.stuff[index].amount--;
@@ -122,7 +116,6 @@ var shopApp = {
         } else {
             this.showWarning();
         }
-
 
         return this;
     },
@@ -164,7 +157,9 @@ var shopApp = {
         event.preventDefault();
         // TODO: Other way to call shopApp.addToCart()?
         // shopApp.addToCart();
+        //KN: 1. way:
         // shopApp.addToCart.apply(shopApp);
+        //KN: 2. way:
         shopApp.addToCart.call(shopApp);
 
         shopApp.updateCart();
