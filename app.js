@@ -14,6 +14,15 @@
 
 // TODO: What does it do?
 'use strict';
+/*
+Strict mode applied in a JavaScript document prevents from using 'bad' syntax which - when used - may cause mistakes in a code. Strict mode can be applied globally (for a whole document) or locally (for a single function). It must be declared at the beginning of a document/function. In a strict mode we CANNOT (just to name a few):
+- use a variable without a previous declaration,
+- overwrite some of global variables (e.g. NaN, Infinity),
+- duplicate names of an object's keys,
+- duplicate names of a function's parameters,
+- using names reserved as keywords.
+*/
+
 
 var stuffToBuy = [
     {
