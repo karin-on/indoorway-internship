@@ -44,6 +44,11 @@ body {
     display: block;
 }
 
+.warning {
+    color: red;
+    min-height: 20px;
+}
+
 .cart {
     list-style: none;
 }
