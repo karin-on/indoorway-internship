@@ -1,5 +1,6 @@
 :root {
     --color-white: #ffffff;
+    --color-red: #ff0000;
 }
 
 body {
@@ -45,7 +46,7 @@ body {
 }
 
 .warning {
-    color: red;
+    color: var(--color-red);
     min-height: 20px;
 }
 
