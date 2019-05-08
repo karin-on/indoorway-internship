@@ -95,12 +95,12 @@ var shopApp = {
 
     showWarning: function showWarning() {
         this.warning.innerHTML = "You can't buy this product anymore. It is no longer in stock.";
-        return this;
+        // return this;
     },
 
     hideWarning: function hideWarning() {
         this.warning.innerHTML = '';
-        return this;
+        // return this;
     },
 
     addToCart: function addToCart(index) {
@@ -161,7 +161,7 @@ var shopApp = {
     },
 
     // TODO: How we call this expression?
-    //KN: fat arrow function
+    //KN: We call this expression 'fat arrow function'
     onStuffAdd: (event) => {        //submit forma
         event.preventDefault();
         // TODO: Other way to call shopApp.addToCart()?
@@ -176,9 +176,5 @@ var shopApp = {
 }
 
 // TODO: Why we can do this?
-// shopApp.init(stuffToBuy).addToCart().addToCart(1).updateCart();
-shopApp.init(stuffToBuy);   //dodaje options, pokazuje opis 1. produktu, podpina zdarzenia do selecta i form
-shopApp.addToCart();        //dodaje 1. produkt do tablicy cart
-shopApp.addToCart(1);       //dodaje 2. produkt do tablicy cart
-// console.log(shopApp.cart);
-shopApp.updateCart();       //zamienia tablicę cart na HTML
+//KN: We can chain these methods because they return 'this' - a current object instance. This way we make sure every next method is invoked on return value of the previous one.
+shopApp.init(stuffToBuy).addToCart().addToCart(1).updateCart();
