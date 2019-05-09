@@ -46,6 +46,7 @@ var shopApp = {
         // State
         this.stuff = stuffToBuy;
         this.cart = [];
+        this.value = 0;
 
         // HTML Elements
         // TODO: Do you know other ways of getting elements?
@@ -56,6 +57,7 @@ var shopApp = {
         this.price = document.querySelector('#price');
         this.description = document.querySelector('#description');
         this.warning = document.querySelector('#warning');
+        this.cartValue = document.querySelector('#cartValue');
 
         // Bind events
         this.stuffSelect.addEventListener('change', this.onStuffChange);
@@ -106,24 +108,26 @@ var shopApp = {
     },
 
     addToCart: function addToCart(index) {
-        var index = index ? index : this.stuffSelect.selectedIndex;
-        console.log(index);
+        var ind = index ? index : this.stuffSelect.selectedIndex;
+        console.log(ind);
 
         var stuff = {
             // TODO: How we call this statement?
             //KN: ternary operator
             // name: index ? this.stuff[index].name : this.stuffSelect.selectedOptions[0].value,
-            name: this.stuff[index].name,
+            name: this.stuff[ind].name,
+            price: this.stuff[ind].value,
             amount: 1
         };
         // TODO: Other way of adding elements to an array?
         // this.cart[this.cart.length] = stuff;
         //KN: this.cart.push(stuff);
 
-        if (this.isAvailable(index)) {
+        if (this.isAvailable(ind)) {
             this.cart.push(stuff);
-            this.stuff[index].amount--;
+            this.stuff[ind].amount--;
             this.populateStuffSelect();
+            this.calculateCartValue(this.stuff[ind].value);
         } else {
             this.showWarning();
         }
@@ -138,7 +142,15 @@ var shopApp = {
             // this.cartElement.innerHTML += '<li>'+ this.cart[i].name +'</li>'
 
             var li = document.createElement('li');
-            li.innerHTML = this.cart[i].name;
+            var itemDescr = document.createElement('span');
+            // itemDescr.setAttribute('id', 'item__description');
+            var itemPrice = document.createElement('span');
+            itemPrice.classList.add('item__price');
+
+            itemDescr.innerHTML = this.cart[i].name;
+            itemPrice.innerHTML = `${this.cart[i].price} USD`;
+            li.appendChild(itemDescr);
+            li.appendChild(itemPrice);
             this.cartElement.appendChild(li);
         }
 
@@ -146,12 +158,20 @@ var shopApp = {
     },
 
     showPrice: function showPrice(index) {
-        this.price.innerHTML = `${stuffToBuy[index].value} PLN`;
+        this.price.innerHTML = `${stuffToBuy[index].value} USD`;
     },
 
     showDescription: function showDescription(index) {
         // TODO: Display description of thing you want to buy
         this.description.innerHTML = stuffToBuy[index].desc;
+    },
+
+    calculateCartValue: function calculateCartValue(value) {
+        console.log(value);
+        value ? this.value += value : null;
+        this.cartValue.innerHTML = `${this.value} USD`;
+
+        return this;
     },
 
     /**
@@ -184,4 +204,5 @@ var shopApp = {
 
 // TODO: Why we can do this?
 //KN: We can chain these methods because they return 'this' - a current object instance. This way we make sure every next method is invoked on return value of the previous one.
+// shopApp.init(stuffToBuy).addToCart().addToCart(1).updateCart();
 shopApp.init(stuffToBuy).addToCart().addToCart(1).updateCart();

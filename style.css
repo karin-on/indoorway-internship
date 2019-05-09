@@ -57,3 +57,7 @@ body {
 .cart > *:nth-child(even) {
     color: var(--color-white);
 }
+
+.item__price {
+    margin-left: 30px;
+}
