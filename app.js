@@ -53,6 +53,7 @@ var shopApp = {
         this.stuffSelect = document.querySelector('#stuffSelect');
         this.addStuffForm = document.querySelector('#addStuffForm');
         this.cartElement = document.querySelector('#cart');
+        this.price = document.querySelector('#price');
         this.description = document.querySelector('#description');
         this.warning = document.querySelector('#warning');
 
@@ -62,6 +63,7 @@ var shopApp = {
 
         this.populateStuffSelect();
 
+        this.showPrice(0);
         this.showDescription(0);
 
         return this;
@@ -143,6 +145,10 @@ var shopApp = {
         return this;
     },
 
+    showPrice: function showPrice(index) {
+        this.price.innerHTML = `${stuffToBuy[index].value} PLN`;
+    },
+
     showDescription: function showDescription(index) {
         // TODO: Display description of thing you want to buy
         this.description.innerHTML = stuffToBuy[index].desc;
@@ -153,6 +159,7 @@ var shopApp = {
      **/
     onStuffChange: function onStuffChange() {       //zmiana selecta
         // TODO: Update description of thing you just chosen
+        shopApp.showPrice(shopApp.stuffSelect.selectedIndex);
         shopApp.showDescription(shopApp.stuffSelect.selectedIndex);
 
         !shopApp.isAvailable(shopApp.stuffSelect.selectedIndex) ?
