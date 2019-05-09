@@ -24,7 +24,7 @@ Strict mode applied in a JavaScript document prevents from using 'bad' syntax wh
 */
 
 
-var stuffToBuy = [
+const stuffToBuy = [
     {
         name: 'SamPhone X9',
         amount: 5,
@@ -40,7 +40,7 @@ var stuffToBuy = [
     }
 ];
 
-var shopApp = {
+const shopApp = {
     init: function(stuffToBuy) {
 
         // State
@@ -74,10 +74,9 @@ var shopApp = {
     populateStuffSelect: function populateStuffSelect() {
         this.stuffSelect.innerHTML = '';
         // Populate with buy options
-        for (var i = 0; i < this.stuff.length; i++) {
-            var stuffToAdd = this.stuff[i];
-            this.addBuyOption(stuffToAdd);
-        }
+        this.stuff.forEach(el => {
+            this.addBuyOption(el);
+        });
     },
 
     addBuyOption: function addBuyOption(thing) {
@@ -109,7 +108,6 @@ var shopApp = {
 
     addToCart: function addToCart(index) {
         var ind = index ? index : this.stuffSelect.selectedIndex;
-        console.log(ind);
 
         var stuff = {
             // TODO: How we call this statement?
@@ -137,23 +135,22 @@ var shopApp = {
 
     updateCart: function updateCart() {     //zamienia tablicę cart na HTML
         this.cartElement.innerHTML = '';
-        for(var i = 0; i < this.cart.length; i++) {
-            // TODO: Other way of creating <li>?
-            // this.cartElement.innerHTML += '<li>'+ this.cart[i].name +'</li>'
 
-            var li = document.createElement('li');
-            var itemDescr = document.createElement('span');
+        this.cart.forEach(el => {
+            // TODO: Other way of creating <li>?
+            const li = document.createElement('li');
+            const itemDescr = document.createElement('span');
             // itemDescr.setAttribute('id', 'item__description');
-            var itemPrice = document.createElement('span');
+            const itemPrice = document.createElement('span');
             itemPrice.classList.add('item__price');
 
-            itemDescr.innerHTML = this.cart[i].name;
-            itemPrice.innerHTML = `${this.cart[i].price} USD`;
+            itemDescr.innerHTML = el.name;
+            itemPrice.innerHTML = `${el.price} USD`;
             li.appendChild(itemDescr);
             li.appendChild(itemPrice);
             this.cartElement.appendChild(li);
-        }
-
+        });
+        
         return this;
     },
 
@@ -167,7 +164,6 @@ var shopApp = {
     },
 
     calculateCartValue: function calculateCartValue(value) {
-        console.log(value);
         value ? this.value += value : null;
         this.cartValue.innerHTML = `${this.value} USD`;
 
