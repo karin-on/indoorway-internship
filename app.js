@@ -26,6 +26,7 @@ Strict mode applied in a JavaScript document prevents from using 'bad' syntax wh
 
 const stuffToBuy = [
     {
+        id: 1,
         name: 'SamPhone X9',
         amount: 5,
         value: 1250,
@@ -33,10 +34,18 @@ const stuffToBuy = [
         desc: "It's like a fusion of Iphane and Samsong."
     },
     {
+        id: 2,
         name: 'TV MX3000 300"',
         amount: 3,
         value: 3000,
         desc: 'Biggest TV you can imagine.'
+    },
+    {
+        id: 3,
+        name: 'coś',
+        amount: 3,
+        value: 3000,
+        desc: 'opis cosia'
     }
 ];
 
@@ -109,7 +118,15 @@ const shopApp = {
     addToCart: function addToCart(index) {
         var ind = index ? index : this.stuffSelect.selectedIndex;
 
+        console.log(this.stuff[ind].id);
+        let x = 0;
+        while (x < this.cart.length) {
+            this.stuff[ind].id === this.cart[x] ? console.log('fajno') : console.log('niefajno');
+            x++;
+        }
+
         var stuff = {
+            id: this.stuff[ind].id,
             // TODO: How we call this statement?
             //KN: ternary operator
             // name: index ? this.stuff[index].name : this.stuffSelect.selectedOptions[0].value,
@@ -150,7 +167,7 @@ const shopApp = {
             li.appendChild(itemPrice);
             this.cartElement.appendChild(li);
         });
-        
+
         return this;
     },
 
@@ -200,5 +217,6 @@ const shopApp = {
 
 // TODO: Why we can do this?
 //KN: We can chain these methods because they return 'this' - a current object instance. This way we make sure every next method is invoked on return value of the previous one.
-// shopApp.init(stuffToBuy).addToCart().addToCart(1).updateCart();
 shopApp.init(stuffToBuy).addToCart().addToCart(1).updateCart();
+
+
