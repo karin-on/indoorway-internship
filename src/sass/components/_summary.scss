@@ -18,6 +18,17 @@
 
 .summary__par {
   font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.summary__go-back-button {
+  @include button;
+  width: 100%;
+  max-width: 350px;
+
+  &:hover {
+    @include button-hover;
+  }
 }
 
 //Media Queries
@@ -33,6 +44,10 @@
 
   .item__amount {
     min-width: 60px;
+  }
+
+  .summary__go-back-button {
+    font-size: 16px;
   }
 }
 

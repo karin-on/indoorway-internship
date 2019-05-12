@@ -10,6 +10,7 @@ export default {
             <h2 class="summary__header">Congratulations! You just bought:</h2>
             <ul id="summary" class="summary__list"></ul>
             <p class="summary__par">Come back to us soon!</p>
+            <button id="go-back" class="summary__go-back-button">Go back to the shop</button>
         `;
 
         mainContent.appendChild(summary);
