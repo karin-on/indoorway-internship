@@ -137,8 +137,6 @@ const shopApp = {
         //KN: this.cart.push(stuff);
 
         if (this.isAvailable(ind)) {
-            console.log(this.cart.productsIDs.includes(stuff.id));
-
             if (this.cart.productsIDs.includes(stuff.id)) {
                 const ind = this.cart.productsIDs.indexOf(stuff.id);
                 this.cart.products[ind].amount++;
@@ -177,7 +175,7 @@ const shopApp = {
             itemAmount.classList.add('item__amount');
 
             itemDescr.innerHTML = el.name;
-            itemPrice.innerHTML = `${el.price} USD`;
+            itemPrice.innerHTML = `USD ${el.price}`;
             itemAmount.innerHTML = `${el.amount} pcs`;
             li.appendChild(itemDescr);
             li.appendChild(itemPrice);
@@ -199,7 +197,7 @@ const shopApp = {
 
     updateCartValue: function updateCartValue(value) {
         value ? this.cartValue += value : null;      //to jest chyba niepotrzebne
-        this.cartValueElement.innerHTML = `${this.cartValue} USD`;
+        this.cartValueElement.innerHTML = `USD ${this.cartValue}`;
 
         return this;
     },
