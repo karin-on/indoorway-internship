@@ -172,6 +172,7 @@ const shopApp = {
         this.cart.products.forEach(el => {
             // TODO: Other way of creating <li>?
             const li = document.createElement('li');
+            li.classList.add('cart__item');
 
             const itemDescr = document.createElement('span');
             // itemDescr.setAttribute('id', 'item__description');

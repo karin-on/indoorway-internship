@@ -7,4 +7,10 @@
   "abstracts/mixins";
 
 @import
-  "layout/body";
+  "layout/body",
+  "layout/page-wrapper",
+  "layout/container",
+  "layout/main-content";
+
+@import
+  "components/header";

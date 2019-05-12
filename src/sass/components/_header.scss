@@ -1,0 +1,49 @@
+.header {
+  background-color: $color-green-3;
+  color: $color-white;
+  padding: 20px 10px;
+  position: relative;
+  font-weight: 100;
+  box-shadow: 0 10px 15px -20px $color-black;
+}
+
+.header__title {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.header__subtitle {
+  font-size: 14px;
+}
+
+.header__logo {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  filter: grayscale(100%);
+}
+
+
+@media (min-width: 500px) {
+  .header {
+    text-align: center;
+  }
+}
+
+@media (min-width: 650px) {
+  .header__title {
+    font-size: 36px;
+  }
+
+  .header__subtitle {
+    font-size: 18px;
+  }
+
+  .header__logo {
+    width: 100px;
+    height: 100px;
+  }
+}
