@@ -15,12 +15,12 @@
 // TODO: What does it do?
 'use strict';
 /*
-Strict mode applied in a JavaScript document prevents from using 'bad' syntax which - when used - may cause mistakes in a code. Strict mode can be applied globally (for a whole document) or locally (for a single function). It must be declared at the beginning of a document/function. In a strict mode we CANNOT (just to name a few):
+Strict mode applied in a JavaScript document prevents from using 'bad' syntax which - when used - may lead to mistakes in a code. Strict mode can be applied globally (for a whole document) or locally (for a single function). It must be declared at the beginning of a document/function. In a strict mode we CANNOT (just to name a few):
 - use a variable without a previous declaration,
 - overwrite some of global variables (e.g. NaN, Infinity),
 - duplicate names of an object's keys,
 - duplicate names of a function's parameters,
-- using names reserved as keywords.
+- using names reserved in JS as keywords.
 */
 
 
@@ -54,8 +54,12 @@ const shopApp = {
 
         // State
         this.stuff = stuffToBuy;
-        this.cart = [];
-        this.value = 0;
+        // this.cart = [];
+        this.cart = {
+            products: [],
+            productsIDs: []
+        };
+        this.cartValue = 0;
 
         // HTML Elements
         // TODO: Do you know other ways of getting elements?
@@ -66,7 +70,7 @@ const shopApp = {
         this.price = document.querySelector('#price');
         this.description = document.querySelector('#description');
         this.warning = document.querySelector('#warning');
-        this.cartValue = document.querySelector('#cartValue');
+        this.cartValueElement = document.querySelector('#cartValue');
 
         // Bind events
         this.stuffSelect.addEventListener('change', this.onStuffChange);
@@ -118,31 +122,37 @@ const shopApp = {
     addToCart: function addToCart(index) {
         var ind = index ? index : this.stuffSelect.selectedIndex;
 
-        console.log(this.stuff[ind].id);
-        let x = 0;
-        while (x < this.cart.length) {
-            this.stuff[ind].id === this.cart[x] ? console.log('fajno') : console.log('niefajno');
-            x++;
-        }
-
         var stuff = {
             id: this.stuff[ind].id,
             // TODO: How we call this statement?
             //KN: ternary operator
             // name: index ? this.stuff[index].name : this.stuffSelect.selectedOptions[0].value,
             name: this.stuff[ind].name,
-            price: this.stuff[ind].value,
+            price: this.stuff[ind].value,     //czy to jest potrzebne?
             amount: 1
         };
+
         // TODO: Other way of adding elements to an array?
         // this.cart[this.cart.length] = stuff;
         //KN: this.cart.push(stuff);
 
         if (this.isAvailable(ind)) {
-            this.cart.push(stuff);
+            console.log(this.cart.productsIDs.includes(stuff.id));
+
+            if (this.cart.productsIDs.includes(stuff.id)) {
+                const ind = this.cart.productsIDs.indexOf(stuff.id);
+                this.cart.products[ind].amount++;
+            } else {
+                this.cart.products.push(stuff);
+                this.cart.productsIDs.push(stuff.id);
+            }
+
+            console.log(this.cart);
+
             this.stuff[ind].amount--;
             this.populateStuffSelect();
-            this.calculateCartValue(this.stuff[ind].value);
+            this.updateCartValue(this.stuff[ind].value);
+
         } else {
             this.showWarning();
         }
@@ -153,18 +163,25 @@ const shopApp = {
     updateCart: function updateCart() {     //zamienia tablicę cart na HTML
         this.cartElement.innerHTML = '';
 
-        this.cart.forEach(el => {
+        this.cart.products.forEach(el => {
             // TODO: Other way of creating <li>?
             const li = document.createElement('li');
+
             const itemDescr = document.createElement('span');
             // itemDescr.setAttribute('id', 'item__description');
+
             const itemPrice = document.createElement('span');
             itemPrice.classList.add('item__price');
 
+            const itemAmount = document.createElement('span');
+            itemAmount.classList.add('item__amount');
+
             itemDescr.innerHTML = el.name;
             itemPrice.innerHTML = `${el.price} USD`;
+            itemAmount.innerHTML = `${el.amount} pcs`;
             li.appendChild(itemDescr);
             li.appendChild(itemPrice);
+            li.appendChild(itemAmount);
             this.cartElement.appendChild(li);
         });
 
@@ -180,9 +197,9 @@ const shopApp = {
         this.description.innerHTML = stuffToBuy[index].desc;
     },
 
-    calculateCartValue: function calculateCartValue(value) {
-        value ? this.value += value : null;
-        this.cartValue.innerHTML = `${this.value} USD`;
+    updateCartValue: function updateCartValue(value) {
+        value ? this.cartValue += value : null;      //to jest chyba niepotrzebne
+        this.cartValueElement.innerHTML = `${this.cartValue} USD`;
 
         return this;
     },
@@ -190,7 +207,7 @@ const shopApp = {
     /**
      * Events
      **/
-    onStuffChange: function onStuffChange() {       //zmiana selecta
+    onStuffChange: function onStuffChange() {
         // TODO: Update description of thing you just chosen
         shopApp.showPrice(shopApp.stuffSelect.selectedIndex);
         shopApp.showDescription(shopApp.stuffSelect.selectedIndex);
@@ -201,8 +218,8 @@ const shopApp = {
     },
 
     // TODO: How we call this expression?
-    //KN: We call this expression 'fat arrow function'
-    onStuffAdd: (event) => {        //submit forma
+    //KN: '(fat) arrow function'
+    onStuffAdd: (event) => {
         event.preventDefault();
         // TODO: Other way to call shopApp.addToCart()?
         // shopApp.addToCart();

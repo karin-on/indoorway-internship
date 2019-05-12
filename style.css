@@ -58,6 +58,7 @@ body {
     color: var(--color-white);
 }
 
-.item__price {
+.item__price,
+.item__amount {
     margin-left: 30px;
 }
