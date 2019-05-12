@@ -8,8 +8,12 @@
  - **Write your ideas here or add these functionalities and write here what you have done.**
  What I added:
  a) after adding a product to a cart, its amount in stock decreases;
- b) it's impossible to add to a cart a product which is out of stock;
- c) there is a warning beneath a description showing if a product you try to buy is out of stock;
+ b) it's impossible to add to the cart a product which is out of stock;
+ c) there is a warning beneath a description showing if a product you try to buy/select is out of stock;
+ d) there is a price of selected product showed beneath 'add' button and it changes on select change;
+ e) a price is showed also in the cart, next to a product's name;
+ f) there is a cart's value calculated, updating with each product being added;
+ g) once you add to the cart a product which is already there, a product list in the cart doesn't expand. Instead each product on the list has a field showing number of pieces in the cart;
  **/
 
 // TODO: What does it do?
