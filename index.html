@@ -52,53 +52,15 @@ KN: In the middle of...? I assumed that it refers to the middle of the parent, #
 
 9. Is it looking nice? What else you can do?
 - **Write some ideas here or modify the page and write what you have done:)**
-KN: To be honest, no, it does not look nice to me :D Neither graphics, nor the code itself. I would modify both.
+KN: To be honest, no, it does not look nice to me :D Neither graphics, nor the code itself. I modified it here: .....................
 
-- reset? -> maybe recommended only
-- BEM + no ids/* in CSS
-- container?
-- class to each cart element (li in JS)
-- select's and button's look
-- RWD + mobile-first
-
+Apart from changing the graphics and a bit of HTML markup structure:
+- I used Sass and BEM,
+- I added reset CSS,
+- I uses classes for styling, no IDs,
+- I make the shop responsive (mobile-first)
 
 -->
-<div class="page-wrapper">
-    <div class="container">
-        <header class="header">
-            <h1 class="header__title">- Little Stuff Shop -</h1>
-            <h4 class="header__subtitle">Buy what you want and feel happy</h4>
-            <img class="header__logo" src="https://imageshack.com/a/img923/9881/F0N9Z0.png" alt="Shop with window and doors">
-        </header>
-
-        <main class="main-content">
-            <section class="main-content__products">
-                <h2 class="products__header">Please add things you want to buy:</h2>
-
-                <form class="products__form" id="addStuffForm" action="#">
-                    <label class="form__label" for="stuffSelect">Stuff:</label>
-                    <div class="form__custom-select">
-                        <select class="form__select" name="stuff" id="stuffSelect"></select>
-                    </div>
-                    <button class="form__button" type="submit">Add</button>
-                </form>
-
-                <p class="products__warning" id="warning"></p>
-                <p class="products__price">Price: <span id="price"></span></p>
-                <p class="products__description">Description: <span id="description"></span></p>
-            </section>
-
-            <section class="main-content__cart">
-                <h2 class="cart__header">Stuff I want to buy:</h2>
-                <ul id="cart" class="cart__list"></ul>
-                <p class="cart__summary">Cart's value: <span id="cartValue"></span></p>
-            </section>
-        </main>
-
-    </div>
-</div>
-
-
 
 </body>
 </html>

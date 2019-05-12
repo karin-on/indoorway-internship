@@ -1,68 +1,10 @@
-/**
-
- * Check TODOs in the code and provide answers for them.
- *
- * Additional:
- * 1. Show selected stuff description in the #description box.
- * 2. What else can shop have?
- - **Write your ideas here or add these functionalities and write here what you have done.**
- What I added:
- a) after adding a product to a cart, its amount in stock decreases;
- b) it's impossible to add to the cart a product which is out of stock;
- c) there is a warning beneath a description showing if a product you try to buy/select is out of stock;
- d) there is a price of selected product showed beneath 'add' button and it changes on select change;
- e) a price is showed also in the cart, next to a product's name;
- f) there is a cart's value calculated, updating with each product being added;
- g) once you add to the cart a product which is already there, a product list in the cart doesn't expand. Instead each product on the list has a field showing number of pieces in the cart;
- **/
-
-// TODO: What does it do?
 'use strict';
-/*
-Strict mode applied in a JavaScript document prevents from using 'bad' syntax which - when used - may lead to mistakes in a code. Strict mode can be applied globally (for a whole document) or locally (for a single function). It must be declared at the beginning of a document/function. In a strict mode we CANNOT (just to name a few):
-- use a variable without a previous declaration,
-- overwrite some of global variables (e.g. NaN, Infinity),
-- duplicate names of an object's keys,
-- duplicate names of a function's parameters,
-- using names reserved in JS as keywords.
-*/
-
-
-import './sass/main.scss';
-
-
-
-const stuffToBuy = [
-    {
-        id: 1,
-        name: 'SamPhone X9',
-        amount: 5,
-        value: 1250,
-        // TODO: Replace \x27 with ' char.
-        desc: "It's like a fusion of Iphane and Samsong."
-    },
-    {
-        id: 2,
-        name: 'TV MX3000 300"',
-        amount: 3,
-        value: 3000,
-        desc: 'Biggest TV you can imagine.'
-    },
-    {
-        id: 3,
-        name: 'coś',
-        amount: 3,
-        value: 3000,
-        desc: 'opis cosia'
-    }
-];
 
 const shopApp = {
     init: function(stuffToBuy) {
 
         // State
         this.stuff = stuffToBuy;
-        // this.cart = [];
         this.cart = {
             products: [],
             productsIDs: []
@@ -70,8 +12,6 @@ const shopApp = {
         this.cartValue = 0;
 
         // HTML Elements
-        // TODO: Do you know other ways of getting elements?
-        //KN: document.querySelector( [CSS selector] );
         this.stuffSelect = document.querySelector('#stuffSelect');
         this.addStuffForm = document.querySelector('#addStuffForm');
         this.cartElement = document.querySelector('#cart');
@@ -101,10 +41,6 @@ const shopApp = {
     },
 
     addBuyOption: function addBuyOption(thing) {
-        // TODO: Other way of creating <option>
-        // var option = '<option value="'+ thing.name +'">'+ thing.name + '('+ thing.amount +')' +'</option>';
-        // this.stuffSelect.innerHTML += option;
-
         var option = document.createElement('option');
         option.setAttribute('value', thing.name);
         option.innerHTML = `${thing.name} (${thing.amount})`;
@@ -119,12 +55,10 @@ const shopApp = {
 
     showWarning: function showWarning() {
         this.warning.innerHTML = "You can't buy this product anymore. It is no longer in stock.";
-        // return this;
     },
 
     hideWarning: function hideWarning() {
         this.warning.innerHTML = '';
-        // return this;
     },
 
     addToCart: function addToCart(index) {
@@ -132,17 +66,10 @@ const shopApp = {
 
         var stuff = {
             id: this.stuff[ind].id,
-            // TODO: How we call this statement?
-            //KN: ternary operator
-            // name: index ? this.stuff[index].name : this.stuffSelect.selectedOptions[0].value,
             name: this.stuff[ind].name,
             price: this.stuff[ind].value,     //czy to jest potrzebne?
             amount: 1
         };
-
-        // TODO: Other way of adding elements to an array?
-        // this.cart[this.cart.length] = stuff;
-        //KN: this.cart.push(stuff);
 
         if (this.isAvailable(ind)) {
             if (this.cart.productsIDs.includes(stuff.id)) {
@@ -152,8 +79,6 @@ const shopApp = {
                 this.cart.products.push(stuff);
                 this.cart.productsIDs.push(stuff.id);
             }
-
-            console.log(this.cart);
 
             this.stuff[ind].amount--;
             this.populateStuffSelect();
@@ -166,7 +91,7 @@ const shopApp = {
         return this;
     },
 
-    updateCart: function updateCart() {     //zamienia tablicę cart na HTML
+    updateCart: function updateCart() {
         this.cartElement.innerHTML = '';
 
         this.cart.products.forEach(el => {
@@ -175,7 +100,7 @@ const shopApp = {
             li.classList.add('cart__item');
 
             const itemDescr = document.createElement('span');
-            // itemDescr.setAttribute('id', 'item__description');
+            itemDescr.classList.add('item__description');
 
             const itemPrice = document.createElement('span');
             itemPrice.classList.add('item__price');
@@ -196,16 +121,15 @@ const shopApp = {
     },
 
     showPrice: function showPrice(index) {
-        this.price.innerHTML = `${stuffToBuy[index].value} USD`;
+        this.price.innerHTML = `${this.stuff[index].value} USD`;
     },
 
     showDescription: function showDescription(index) {
-        // TODO: Display description of thing you want to buy
-        this.description.innerHTML = stuffToBuy[index].desc;
+        this.description.innerHTML = this.stuff[index].desc;
     },
 
     updateCartValue: function updateCartValue(value) {
-        value ? this.cartValue += value : null;      //to jest chyba niepotrzebne
+        value ? this.cartValue += value : null;
         this.cartValueElement.innerHTML = `USD ${this.cartValue}`;
 
         return this;
@@ -224,23 +148,11 @@ const shopApp = {
             shopApp.hideWarning();
     },
 
-    // TODO: How we call this expression?
-    //KN: '(fat) arrow function'
     onStuffAdd: (event) => {
         event.preventDefault();
-        // TODO: Other way to call shopApp.addToCart()?
-        // shopApp.addToCart();
-        //KN: 1. way:
-        // shopApp.addToCart.apply(shopApp);
-        //KN: 2. way:
         shopApp.addToCart.call(shopApp);
-
         shopApp.updateCart();
     }
-}
+};
 
-// TODO: Why we can do this?
-//KN: We can chain these methods because they return 'this' - a current object instance. This way we make sure every next method is invoked on return value of the previous one.
-shopApp.init(stuffToBuy).addToCart().addToCart(1).updateCart();
-
-
+export { shopApp };

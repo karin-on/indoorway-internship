@@ -8,9 +8,10 @@
 
 @import
   "layout/body",
-  "layout/page-wrapper",
   "layout/container",
   "layout/main-content";
 
 @import
-  "components/header";
+  "components/header",
+  "components/products",
+  "components/cart";

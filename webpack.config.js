@@ -10,7 +10,7 @@ module.exports = function (env) {
 
     const config = {
         devtool: isDev ? 'eval-source-map' : false,
-        entry: './src/app.js',
+        entry: './src/index.js',
         output: {
             filename: 'out.js',
             path: path.resolve(__dirname, 'docs')
