@@ -28,6 +28,10 @@ Strict mode applied in a JavaScript document prevents from using 'bad' syntax wh
 */
 
 
+import './sass/main.scss';
+
+
+
 const stuffToBuy = [
     {
         id: 1,
