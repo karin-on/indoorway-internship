@@ -12,3 +12,34 @@
   margin-bottom: 20px;
   font-weight: 400;
 }
+
+@mixin button {
+  height: 40px;
+  background-color: $color-green-3;
+  border: none;
+  border-radius: 3px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 400;
+  color: white;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: none;
+  transition: .3s all;
+}
+
+@mixin button-hover {
+  background-color: darken($color-green-3, 3%);
+}
+
+@mixin list {
+  max-width: 550px;
+  font-size: 13px;
+}
+
+@mixin list-item {
+  min-height: 40px;
+  line-height: 40px;
+  display: flex;
+  padding: 0 5px;
+}

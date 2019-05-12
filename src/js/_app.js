@@ -1,15 +1,25 @@
 'use strict';
+import products from './_products';
+import cart from './_cart';
+import summary from './_summary';
 
 const shopApp = {
     init: function(stuffToBuy) {
 
         // State
+        this.cartSection = cart;
+        this.productsSection = products;
+        this.summarySection = summary;
         this.stuff = stuffToBuy;
         this.cart = {
             products: [],
             productsIDs: []
         };
         this.cartValue = 0;
+
+        // Render main content
+        this.productsSection.render();
+        this.cartSection.render();
 
         // HTML Elements
         this.stuffSelect = document.querySelector('#stuffSelect');
@@ -19,10 +29,13 @@ const shopApp = {
         this.description = document.querySelector('#description');
         this.warning = document.querySelector('#warning');
         this.cartValueElement = document.querySelector('#cartValue');
+        this.checkoutBtn = document.querySelector('#checkout');
+        // this.summary = document.querySelector('#summary');
 
         // Bind events
         this.stuffSelect.addEventListener('change', this.onStuffChange);
         this.addStuffForm.addEventListener('submit', this.onStuffAdd);
+        this.checkoutBtn.addEventListener('click', this.onCheckout);
 
         this.populateStuffSelect();
 
@@ -120,7 +133,7 @@ const shopApp = {
     },
 
     showPrice: function showPrice(index) {
-        this.price.innerHTML = `${this.stuff[index].value} USD`;
+        this.price.innerHTML = `USD ${this.stuff[index].value}`;
     },
 
     showDescription: function showDescription(index) {
@@ -132,6 +145,27 @@ const shopApp = {
         this.cartValueElement.innerHTML = `USD ${this.cartValue}`;
 
         return this;
+    },
+
+    sumUpShopping: function sumUpShopping() {
+        shopApp.summary = document.querySelector('#summary');
+
+        this.cart.products.forEach(el => {
+            const li = document.createElement('li');
+            li.classList.add('summary__item');
+
+            const itemDescr = document.createElement('span');
+            itemDescr.classList.add('item__description');
+
+            const itemAmount = document.createElement('span');
+            itemAmount.classList.add('item__amount');
+
+            itemDescr.innerHTML = el.name;
+            itemAmount.innerHTML = `${el.amount} pcs`;
+            li.appendChild(itemDescr);
+            li.appendChild(itemAmount);
+            shopApp.summary.appendChild(li);
+        })
     },
 
     /**
@@ -150,6 +184,13 @@ const shopApp = {
         event.preventDefault();
         shopApp.addToCart.call(shopApp);
         shopApp.updateCart();
+    },
+
+    onCheckout: function () {
+        shopApp.cartSection.remove();
+        shopApp.productsSection.remove();
+        shopApp.summarySection.render();
+        shopApp.sumUpShopping();
     }
 };
 

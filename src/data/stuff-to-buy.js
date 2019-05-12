@@ -17,9 +17,9 @@ export default [
     },
     {
         id: 3,
-        name: 'coś',
-        amount: 3,
-        value: 3000,
-        desc: 'opis cosia'
+        name: 'MacBoot 9"',
+        amount: 1,
+        value: 1000,
+        desc: 'More comfortable than any other boot.'
     }
 ];

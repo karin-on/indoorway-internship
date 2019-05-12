@@ -1,0 +1,43 @@
+.summary__header {
+  @include section-header;
+}
+
+.summary__list {
+  @include list;
+  margin-bottom: 60px;
+}
+
+.summary__item {
+  @include list-item;
+  justify-content: space-between;
+
+  &:nth-child(even) {
+    background-color: $color-gray-3;
+  }
+}
+
+.summary__par {
+  font-weight: 400;
+}
+
+//Media Queries
+@media (min-width: 650px) {
+  .summary__header,
+  .summary__par {
+    font-size: 18px;
+  }
+
+  .summary__list {
+    font-size: 16px;
+  }
+
+  .item__amount {
+    min-width: 60px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .summary__list {
+    width: 550px;
+  }
+}
