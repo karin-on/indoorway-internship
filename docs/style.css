@@ -51,10 +51,7 @@ table {
   box-sizing: border-box; }
 
 body {
-  font-family: "Open Sans", sans-serif; }
-
-.page-wrapper {
-  min-height: 100vh;
+  font-family: "Open Sans", sans-serif;
   background-color: #f2fef9;
   padding: 7% 15px; }
 
@@ -69,11 +66,59 @@ body {
 
 .main-content {
   font-weight: 100;
-  padding: 8% 10px; }
+  padding: 8% 10px 9%; }
+
+@media (min-width: 500px) {
+  .main-content {
+    padding: 8% 20px 9%; } }
+
+@media (min-width: 1000px) {
+  .main-content {
+    display: -webkit-box;
+    display: flex;
+    padding: 8% 4% 9%; } }
+
+.header {
+  background-color: #23d5ad;
+  color: #ffffff;
+  padding: 20px 10px;
+  position: relative;
+  font-weight: 100;
+  box-shadow: 0 10px 15px -20px #000000; }
+
+.header__title {
+  font-size: 26px;
+  margin-bottom: 10px; }
+
+.header__subtitle {
+  font-size: 14px; }
+
+.header__logo {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%); }
+
+@media (min-width: 500px) {
+  .header {
+    text-align: center; } }
+
+@media (min-width: 650px) {
+  .header__title {
+    font-size: 36px; }
+  .header__subtitle {
+    font-size: 18px; }
+  .header__logo {
+    width: 100px;
+    height: 100px; } }
 
 .main-content__products {
-  padding-bottom: 30px;
-  border-bottom: 1px solid #e6e6e6; }
+  padding-bottom: 30px; }
 
 .products__header {
   margin-bottom: 20px;
@@ -144,8 +189,27 @@ body {
   font-weight: 100;
   color: #ff0000; }
 
+@media (min-width: 650px) {
+  .products__header {
+    font-size: 18px; }
+  .form__select,
+  .form__button,
+  .products__warning,
+  .products__price,
+  .products__description {
+    font-size: 16px; }
+  .products__price span,
+  .products__description span {
+    margin-top: 5px; } }
+
+@media (min-width: 1000px) {
+  .main-content__products {
+    width: 450px;
+    border-bottom: none; } }
+
 .main-content__cart {
-  padding-top: 20px; }
+  padding-top: 20px;
+  border-top: 1px solid #e6e6e6; }
 
 .cart__header {
   margin-bottom: 20px;
@@ -154,7 +218,7 @@ body {
 .cart__list {
   max-width: 550px;
   font-size: 13px;
-  margin-bottom: 20px; }
+  margin-bottom: 30px; }
 
 .cart__item {
   min-height: 40px;
@@ -177,18 +241,11 @@ body {
 .cart__summary {
   font-weight: 400; }
 
-@media (min-width: 500px) {
-  .main-content {
-    padding: 8% 20px; } }
-
 @media (min-width: 650px) {
-  .products__header,
-  .cart__header, .cart__summary {
+  .cart__header,
+  .cart__summary {
     font-size: 18px; }
-  .form__select, .form__button, .cart__list,
-  .products__warning,
-  .products__price,
-  .products__description {
+  .cart__list {
     font-size: 16px; }
   .item__price {
     min-width: 90px; }
@@ -196,58 +253,10 @@ body {
     min-width: 60px; } }
 
 @media (min-width: 1000px) {
-  .main-content {
-    display: -webkit-box;
-    display: flex;
-    padding: 8% 4%; }
-  .main-content__products {
-    width: 450px;
-    border-bottom: none;
-    border-right: 1px solid #e6e6e6; }
   .main-content__cart {
     width: 50%;
     padding-top: 0;
-    padding-left: 40px; }
-  .products__price span,
-  .products__description span {
-    margin-top: 5px; } }
-
-.header {
-  background-color: #23d5ad;
-  color: #ffffff;
-  padding: 20px 10px;
-  position: relative;
-  font-weight: 100;
-  box-shadow: 0 10px 15px -20px #000000; }
-
-.header__title {
-  font-size: 26px;
-  margin-bottom: 10px; }
-
-.header__subtitle {
-  font-size: 14px; }
-
-.header__logo {
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  right: 0;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  -webkit-filter: grayscale(100%);
-          filter: grayscale(100%); }
-
-@media (min-width: 500px) {
-  .header {
-    text-align: center; } }
-
-@media (min-width: 650px) {
-  .header__title {
-    font-size: 36px; }
-  .header__subtitle {
-    font-size: 18px; }
-  .header__logo {
-    width: 100px;
-    height: 100px; } }
+    padding-left: 40px;
+    border-top: none;
+    border-left: 1px solid #e6e6e6; } }
 

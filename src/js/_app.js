@@ -95,7 +95,6 @@ const shopApp = {
         this.cartElement.innerHTML = '';
 
         this.cart.products.forEach(el => {
-            // TODO: Other way of creating <li>?
             const li = document.createElement('li');
             li.classList.add('cart__item');
 
@@ -139,7 +138,6 @@ const shopApp = {
      * Events
      **/
     onStuffChange: function onStuffChange() {
-        // TODO: Update description of thing you just chosen
         shopApp.showPrice(shopApp.stuffSelect.selectedIndex);
         shopApp.showDescription(shopApp.stuffSelect.selectedIndex);
 

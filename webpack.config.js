@@ -1,8 +1,6 @@
 const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 
 module.exports = function (env) {
@@ -39,31 +37,17 @@ module.exports = function (env) {
                         { loader: 'sass-loader', options: { sourceMap: isDev } }
                     ]
                 }
-                // {
-                //     test: /\.(png|jpg|jpeg|gif)$/,
-                //     use: {
-                //         loader: 'file-loader',
-                //         options: {
-                //             name: '[name].[ext]',
-                //             outputPath: 'images',
-                //         },
-                //     },
-                // }
             ]
         },
         plugins: [
-            // new CleanWebpackPlugin(),
             new HtmlWebpackPlugin({
                 filename: 'index.html',
-                template: './index.html'
-                // favicon: './src/assets/dinks.ico'
+                template: './index.html',
+                favicon: './src/assets/favicon.ico'
             }),
             new MiniCssExtractPlugin({
                 filename: 'style.css'
             })
-            // new CopyWebpackPlugin([
-            //     { from: 'src/assets/images', to: 'images' }
-            // ])
         ]
     };
 
