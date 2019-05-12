@@ -79,7 +79,7 @@ const shopApp = {
         var stuff = {
             id: this.stuff[ind].id,
             name: this.stuff[ind].name,
-            price: this.stuff[ind].value,     //czy to jest potrzebne?
+            price: this.stuff[ind].value,
             amount: 1
         };
 
@@ -195,7 +195,6 @@ const shopApp = {
     },
 
     onGoBack: function () {
-        console.log('go back');
         location.reload();
     }
 };
