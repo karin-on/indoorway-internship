@@ -30,7 +30,6 @@ const shopApp = {
         this.warning = document.querySelector('#warning');
         this.cartValueElement = document.querySelector('#cartValue');
         this.checkoutBtn = document.querySelector('#checkout');
-        // this.summary = document.querySelector('#summary');
 
         // Bind events
         this.stuffSelect.addEventListener('change', this.onStuffChange);
@@ -149,6 +148,8 @@ const shopApp = {
 
     sumUpShopping: function sumUpShopping() {
         shopApp.summary = document.querySelector('#summary');
+        shopApp.goBackBtn = document.querySelector('#go-back');
+        shopApp.goBackBtn.addEventListener('click', shopApp.onGoBack);
 
         this.cart.products.forEach(el => {
             const li = document.createElement('li');
@@ -191,6 +192,11 @@ const shopApp = {
         shopApp.productsSection.remove();
         shopApp.summarySection.render();
         shopApp.sumUpShopping();
+    },
+
+    onGoBack: function () {
+        console.log('go back');
+        location.reload();
     }
 };
 
