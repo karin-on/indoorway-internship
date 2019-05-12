@@ -6,7 +6,6 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Indoorway - internship</title>
-    <!--<link rel="stylesheet" href="style.css">-->
 <link href="style.css" rel="stylesheet"></head>
 <body>
 
@@ -64,32 +63,42 @@ KN: To be honest, no, it does not look nice to me :D Neither graphics, nor the c
 
 
 -->
-<div id="stuffShop">
-    <header id="header" class="niceColor">
-        <h1>-Little Stuff Shop-</h1>
-        <h4>Buy what you want and feel happy</h4>
-        <img id="logo" src="https://imageshack.com/a/img923/9881/F0N9Z0.png" alt="Shop with window and doors">
-    </header>
+<div class="page-wrapper">
+    <div class="container">
+        <header class="header">
+            <h1 class="header__title">- Little Stuff Shop -</h1>
+            <h4 class="header__subtitle">Buy what you want and feel happy</h4>
+            <img class="header__logo" src="https://imageshack.com/a/img923/9881/F0N9Z0.png" alt="Shop with window and doors">
+        </header>
 
-    <p>Please add things you want to buy:</p>
+        <main class="main-content">
+            <section class="main-content__products">
+                <h2 class="products__header">Please add things you want to buy:</h2>
 
-    <form id="addStuffForm" class="addStuffForm" action="#">
-        <label for="stuffSelect">Stuff:</label>
-        <select name="stuff" id="stuffSelect"></select>
-        <button type="submit">Add</button>
-    </form>
+                <form class="products__form" id="addStuffForm" action="#">
+                    <label class="form__label" for="stuffSelect">Stuff:</label>
+                    <div class="form__custom-select">
+                        <select class="form__select" name="stuff" id="stuffSelect"></select>
+                    </div>
+                    <button class="form__button" type="submit">Add</button>
+                </form>
 
-    <p id="price"></p>
-    <p id="description"></p>
-    <p id="warning" class="warning"></p>
+                <p class="products__warning" id="warning"></p>
+                <p class="products__price">Price: <span id="price"></span></p>
+                <p class="products__description">Description: <span id="description"></span></p>
+            </section>
 
-    <h2 class="niceColor">Stuff I want to buy:</h2>
-    <ul id="cart" class="cart"></ul>
-    <div class="cart-summary">Cart's value: <span id="cartValue"></span></div>
+            <section class="main-content__cart">
+                <h2 class="cart__header">Stuff I want to buy:</h2>
+                <ul id="cart" class="cart__list"></ul>
+                <p class="cart__summary">Cart's value: <span id="cartValue"></span></p>
+            </section>
+        </main>
+
+    </div>
 </div>
 
 
 
-    <!--<script src="app.js"></script>-->
 <script type="text/javascript" src="out.js"></script></body>
 </html>

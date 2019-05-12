@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:100,300,400);
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -52,4 +52,202 @@ table {
 
 body {
   font-family: "Open Sans", sans-serif; }
+
+.page-wrapper {
+  min-height: 100vh;
+  background-color: #f2fef9;
+  padding: 7% 15px; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #fdfdfd;
+  border: 1px solid #f9f9f9;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px 0 #e1f8f4; }
+
+.main-content {
+  font-weight: 100;
+  padding: 8% 10px; }
+
+.main-content__products {
+  padding-bottom: 30px;
+  border-bottom: 1px solid #e6e6e6; }
+
+.products__header {
+  margin-bottom: 20px;
+  font-weight: 400; }
+
+.form__label {
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-size: 13px; }
+
+.products__form {
+  max-width: 350px;
+  margin-bottom: 20px; }
+
+.products__form > * {
+  display: block; }
+
+.form__custom-select {
+  margin-bottom: 10px;
+  height: 40px;
+  border: 1px solid #e6e6e6;
+  border-radius: 3px;
+  background-color: white; }
+
+.form__select {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+  font-family: inherit;
+  font-weight: inherit;
+  cursor: pointer;
+  font-size: 13px; }
+
+.form__button {
+  width: 100%;
+  height: 40px;
+  background-color: #23d5ad;
+  border: none;
+  border-radius: 3px;
+  font-size: 13px;
+  font-family: inherit;
+  font-weight: 400;
+  color: white;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: none;
+  -webkit-transition: .3s all;
+  transition: .3s all; }
+
+.form__button:hover {
+  background-color: #21c8a2; }
+
+.products__warning,
+.products__price,
+.products__description {
+  font-size: 13px;
+  font-weight: 400;
+  margin-bottom: 8px; }
+
+.products__price span,
+.products__description span {
+  display: block;
+  font-weight: 100; }
+
+.products__warning {
+  min-height: 26px;
+  font-weight: 100;
+  color: #ff0000; }
+
+.main-content__cart {
+  padding-top: 20px; }
+
+.cart__header {
+  margin-bottom: 20px;
+  font-weight: 400; }
+
+.cart__list {
+  max-width: 550px;
+  font-size: 13px;
+  margin-bottom: 20px; }
+
+.cart__item {
+  min-height: 40px;
+  line-height: 40px;
+  display: -webkit-box;
+  display: flex;
+  padding: 0 5px; }
+
+.cart__item:nth-child(even) {
+  background-color: #f8f8f8; }
+
+.item__amount {
+  min-width: 40px;
+  text-align: right; }
+
+.item__price {
+  margin-left: auto;
+  min-width: 70px; }
+
+.cart__summary {
+  font-weight: 400; }
+
+@media (min-width: 500px) {
+  .main-content {
+    padding: 8% 20px; } }
+
+@media (min-width: 650px) {
+  .products__header,
+  .cart__header, .cart__summary {
+    font-size: 18px; }
+  .form__select, .form__button, .cart__list,
+  .products__warning,
+  .products__price,
+  .products__description {
+    font-size: 16px; }
+  .item__price {
+    min-width: 90px; }
+  .item__amount {
+    min-width: 60px; } }
+
+@media (min-width: 1000px) {
+  .main-content {
+    display: -webkit-box;
+    display: flex;
+    padding: 8% 4%; }
+  .main-content__products {
+    width: 450px;
+    border-bottom: none;
+    border-right: 1px solid #e6e6e6; }
+  .main-content__cart {
+    width: 50%;
+    padding-top: 0;
+    padding-left: 40px; }
+  .products__price span,
+  .products__description span {
+    margin-top: 5px; } }
+
+.header {
+  background-color: #23d5ad;
+  color: #ffffff;
+  padding: 20px 10px;
+  position: relative;
+  font-weight: 100;
+  box-shadow: 0 10px 15px -20px #000000; }
+
+.header__title {
+  font-size: 26px;
+  margin-bottom: 10px; }
+
+.header__subtitle {
+  font-size: 14px; }
+
+.header__logo {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%); }
+
+@media (min-width: 500px) {
+  .header {
+    text-align: center; } }
+
+@media (min-width: 650px) {
+  .header__title {
+    font-size: 36px; }
+  .header__subtitle {
+    font-size: 18px; }
+  .header__logo {
+    width: 100px;
+    height: 100px; } }
 
